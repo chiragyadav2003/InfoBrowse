@@ -24,8 +24,8 @@ InfoBrowse is a simple, aesthetic React application that fetches data from a pub
 1. Clone the repository:
 
    ```sh
-   git clone https://github.com/chiragyadav2003/infobrowse.git
-   cd infobrowse
+   git clone https://github.com/chiragyadav2003/InfoBrowse
+   cd InfoBrowse
    ```
 
 2. Install dependencies
@@ -42,7 +42,7 @@ InfoBrowse is a simple, aesthetic React application that fetches data from a pub
 
 ## Folder Structure
 
-    infobrowse/
+    InfoBrowse/
     ├── public/
     │   ├── index.html
     │   └── ...
