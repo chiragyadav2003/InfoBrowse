@@ -1,8 +1,69 @@
-# React + Vite
+# InfoBrowse
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+InfoBrowse is a simple, aesthetic React application that fetches data from a public API and displays it in a user-friendly format. The application includes features such as data listing, search functionality, theme toggling, and pagination.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetch data from a public API
+- Display data in a list view using Material-UI components
+- Search functionality to filter displayed items
+- Responsive design for different screen sizes
+- Theme toggling (light and dark mode)
+- Pagination for easy navigation
+- Fixed, transparent navbar and footer with links
+
+## Technologies Used
+
+- React.js
+- Vite
+- Material-UI
+- Axios
+
+## Installation
+
+1. Clone the repository:
+
+   ```sh
+   git clone https://github.com/chiragyadav2003/infobrowse.git
+   cd infobrowse
+   ```
+
+2. Install dependencies
+
+   ```sh
+   yarn install
+   ```
+
+3. Start the development server:
+
+   ```sh
+   yarn dev
+   ```
+
+## Folder Structure
+
+    infobrowse/
+    ├── public/
+    │   ├── index.html
+    │   └── ...
+    ├── src/
+    │   ├── components/
+    │   │   ├── Navbar.js
+    │   │   ├── Footer.js
+    │   │   ├── ItemList.js
+    │   │   └── SearchBar.js
+    │   ├── App.js
+    │   ├── index.css
+    │   └── main.js
+    ├── .gitignore
+    ├── package.json
+    ├── README.md
+    └── vite.config.js
+
+## Author
+
+GitHub - [chiragyadav2003](https://github.com/chiragyadav2003)
+
+## License
+
+This project is licensed under the MIT License.
