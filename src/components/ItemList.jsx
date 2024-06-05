@@ -1,35 +1,58 @@
-import { useEffect, useState } from 'react';
-import { fetchData } from '../services/api';
-import { Grid, CircularProgress } from '@mui/material';
-import ItemCard from './ItemCard';
+import { useState, useEffect } from 'react';
+import { Box, Grid, Typography, Card, CardContent, Pagination } from '@mui/material';
+import axios from 'axios';
 
 const ItemList = ({ searchTerm }) => {
   const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
   useEffect(() => {
-    const getItems = async () => {
-      const data = await fetchData();
-      setItems(data);
-      setLoading(false);
+    const fetchData = async () => {
+      const result = await axios('https://jsonplaceholder.typicode.com/posts');
+      setItems(result.data);
     };
-    getItems();
+    fetchData();
   }, []);
 
   const filteredItems = items.filter(item =>
     item.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  return loading ? (
-    <CircularProgress />
-  ) : (
-    <Grid container spacing={2}>
-      {filteredItems.map(item => (
-        <Grid item key={item.id} xs={12} sm={6} md={4}>
-          <ItemCard title={item.title} body={item.body} />
-        </Grid>
-      ))}
-    </Grid>
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
+  const paginatedItems = filteredItems.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  return (
+    <Box>
+      <Grid container spacing={2}>
+        {paginatedItems.map(item => (
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
+            <Card>
+              <CardContent>
+                <Typography variant="h6">{item.title}</Typography>
+                <Typography variant="body2" color="text.secondary">
+                  {item.body}
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
+      </Grid>
+      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+        <Pagination
+          count={Math.ceil(filteredItems.length / itemsPerPage)}
+          page={currentPage}
+          onChange={handlePageChange}
+          color="primary"
+        />
+      </Box>
+    </Box>
   );
 };
 
