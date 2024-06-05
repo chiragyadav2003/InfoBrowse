@@ -14,7 +14,7 @@ const Navbar = ({ toggleTheme, theme }) => {
     >
       <Toolbar>
         <Typography variant="h6" sx={{ flexGrow: 1, color: theme === 'light' ? 'black' : 'white' }}>
-          Simple React App
+          InfoBrowse
         </Typography>
         <IconButton
           color="inherit"
